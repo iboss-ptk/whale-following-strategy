@@ -6,10 +6,10 @@ const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
 const secret_chat = 1255970858
 
 const now = () => Math.floor(Date.now() / 1000)
-const min = 10000000
+const min = 1000000
 const currencies = ['btc', 'eth']
 
-const window_m = 5
+const window_m = 50
 
 const whales = (currency) => axios.get(
     `https://api.whale-alert.io/v1/transactions?` +
