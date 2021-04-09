@@ -61,7 +61,7 @@ const formatTime = (time) => {
 
     txns.forEach(({symbol, from, to, timestamp, amount, amount_usd}) => {
         const rep = Math.floor(amount_usd / 1000000)
-        (await telegram(`
+        const res = await telegram(`
 =====
 ${ formatCurrency(amount, symbol.toUpperCase())}
 =====
@@ -70,7 +70,8 @@ ${'🚨'.repeat(rep)}
 has been transfered
 ${from.owner_type} => ${to.owner_type} (${to.owner})
 [@ ${formatTime(timestamp)}]
-`)).inspect()
+`)
+        console.log(res)
     })
 })()
 
