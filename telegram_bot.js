@@ -5,15 +5,17 @@ const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY
 const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
 const secret_chat = 1255970858
 
-
-console.log('telegram', TELEGRAM_API_KEY.substring(5,25))
-console.log('whale alert', WHALE_ALERT_API_KEY.substring(5,25))
-
 const now = () => Math.floor(Date.now() / 1000)
 const min = 1000000
 const currencies = ['btc', 'eth']
 
 const window_m = 50
+
+
+Object.inspect = function() {
+    console.log(this)
+    return this
+}
 
 const whales = (currency) => axios.get(
     `https://api.whale-alert.io/v1/transactions?` +
@@ -37,7 +39,7 @@ const formatCurrency = (amount, currency) => new Intl.NumberFormat('en-US', {
 const telegram = (text) => 
     axios.post(`https://api.telegram.org/bot1713462605:${TELEGRAM_API_KEY}/sendMessage`, {
         chat_id: secret_chat, text
-    })
+    }).inspect()
 const formatTime = (time) => {
     const date = new Date(time * 1000)
     const timeZone = 'Asia/Bangkok'
@@ -53,6 +55,8 @@ const formatTime = (time) => {
         const c = currencies[i] 
         txns = txns.concat(((await whales(c)).data.transactions || [])
         .filter(t => t.from.owner_type !== 'exchange' && t.to.owner_type === 'exchange'))
+
+        console.log('transactions', txns)
     }
 
     txns.forEach(({symbol, from, to, timestamp, amount, amount_usd}) => {
