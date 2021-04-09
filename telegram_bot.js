@@ -6,8 +6,8 @@ const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
 const secret_chat = 1255970858
 
 
-console.log(TELEGRAM_API_KEY.substring(1,5))
-console.log(WHALE_ALERT_API_KEY.substring(1,5))
+console.log('telegram', TELEGRAM_API_KEY.substring(1,5))
+console.log('whale alert', WHALE_ALERT_API_KEY.substring(1,5))
 
 const now = () => Math.floor(Date.now() / 1000)
 const min = 1000000
@@ -56,12 +56,12 @@ const formatTime = (time) => {
     }
 
     txns.forEach(({symbol, from, to, timestamp, amount, amount_usd}) => {
-        const rep = Math.floor(amount_usd / 5000000)
+        const rep = Math.floor(amount_usd / 1000000)
         telegram(`
 =====
 ${ formatCurrency(amount, symbol.toUpperCase())}
 =====
-🚨${'🚨'.repeat(rep)}
+${'🚨'.repeat(rep)}
 (${usd(amount_usd)})
 has been transfered
 ${from.owner_type} => ${to.owner_type} (${to.owner})
