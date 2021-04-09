@@ -5,6 +5,10 @@ const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY
 const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
 const secret_chat = 1255970858
 
+
+console.log(TELEGRAM_API_KEY.substring(1,5))
+console.log(WHALE_ALERT_API_KEY.substring(1,5))
+
 const now = () => Math.floor(Date.now() / 1000)
 const min = 1000000
 const currencies = ['btc', 'eth']
