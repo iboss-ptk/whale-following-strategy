@@ -11,13 +11,6 @@ const currencies = ['btc', 'eth']
 
 const window_m = 50
 
-console.log('telelen', TELEGRAM_API_KEY.length)
-
-Object.inspect = function() {
-    console.log(this)
-    return this
-}
-
 const whales = (currency) => axios.get(
     `https://api.whale-alert.io/v1/transactions?` +
     `api_key=${WHALE_ALERT_API_KEY}&` +
@@ -69,8 +62,11 @@ ${'🚨'.repeat(rep)}
 has been transfered
 ${from.owner_type} => ${to.owner_type} (${to.owner})
 [@ ${formatTime(timestamp)}]
-`).then(x => console.log('res:', x))
-.catch(err => console.error(err))
+`)
+.catch(err => {
+    console.error(err)
+    process.exit(1)
+})
     })
 })()
 
