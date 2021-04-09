@@ -39,7 +39,7 @@ const formatCurrency = (amount, currency) => new Intl.NumberFormat('en-US', {
 const telegram = (text) => 
     axios.post(`https://api.telegram.org/bot1713462605:${TELEGRAM_API_KEY}/sendMessage`, {
         chat_id: secret_chat, text
-    }).inspect()
+    })
 const formatTime = (time) => {
     const date = new Date(time * 1000)
     const timeZone = 'Asia/Bangkok'
@@ -61,7 +61,7 @@ const formatTime = (time) => {
 
     txns.forEach(({symbol, from, to, timestamp, amount, amount_usd}) => {
         const rep = Math.floor(amount_usd / 1000000)
-        telegram(`
+        (await telegram(`
 =====
 ${ formatCurrency(amount, symbol.toUpperCase())}
 =====
@@ -70,7 +70,7 @@ ${'🚨'.repeat(rep)}
 has been transfered
 ${from.owner_type} => ${to.owner_type} (${to.owner})
 [@ ${formatTime(timestamp)}]
-`)
+`)).inspect()
     })
 })()
 
