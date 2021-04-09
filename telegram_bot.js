@@ -6,8 +6,8 @@ const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
 const secret_chat = 1255970858
 
 
-console.log('telegram', TELEGRAM_API_KEY.substring(1,5))
-console.log('whale alert', WHALE_ALERT_API_KEY.substring(1,5))
+console.log('telegram', TELEGRAM_API_KEY.substring(5,25))
+console.log('whale alert', WHALE_ALERT_API_KEY.substring(5,25))
 
 const now = () => Math.floor(Date.now() / 1000)
 const min = 1000000

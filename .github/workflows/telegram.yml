@@ -9,4 +9,7 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm install
       - name: send message
-        run: TELEGRAM_API_KEY="${{ secrets.TELEGRAM_API_KEY }}" WHALE_ALERT_API_KEY="${{ secrets.WHALE_ALERT_API_KEY }}" node telegram_bot.js
+        env:
+          TELEGRAM_API_KEY: ${{ secrets.TELEGRAM_API_KEY }}
+          WHALE_ALERT_API_KEY: ${{ secrets.WHALE_ALERT_API_KEY }}
+        run: node telegram_bot.js
