@@ -11,4 +11,4 @@ jobs:
         env:
           TELEGRAM_API_KEY: ${{ secrets.TELEGRAM_API_KEY }}
           WHALE_ALERT_API_KEY: ${{ secrets.WHALE_ALERT_API_KEY }}
-        run: node telegram_bot.js
+        run: TELEGRAM_API_KEY="$TELEGRAM_API_KEY" WHALE_ALERT_API_KEY="$WHALE_ALERT_API_KEY" node telegram_bot.js
