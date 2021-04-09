@@ -2,6 +2,7 @@ name: telegram
 on: [push]
 jobs:
   run-bot:
+    environment: telegram
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
