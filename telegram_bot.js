@@ -71,6 +71,7 @@ has been transfered
 ${from.owner_type} => ${to.owner_type} (${to.owner})
 [@ ${formatTime(timestamp)}]
 `).then(x => console.log('res:', x))
+.catch(err => console.error(err))
     })
 })()
 
