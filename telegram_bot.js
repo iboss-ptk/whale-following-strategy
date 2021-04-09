@@ -55,8 +55,6 @@ const formatTime = (time) => {
         const c = currencies[i] 
         txns = txns.concat(((await whales(c)).data.transactions || [])
         .filter(t => t.from.owner_type !== 'exchange' && t.to.owner_type === 'exchange'))
-
-        console.log('transactions', txns)
     }
 
     txns.forEach(({symbol, from, to, timestamp, amount, amount_usd}) => {
