@@ -11,6 +11,7 @@ const currencies = ['btc', 'eth']
 
 const window_m = 50
 
+console.log('telelen', TELEGRAM_API_KEY.length)
 
 Object.inspect = function() {
     console.log(this)
