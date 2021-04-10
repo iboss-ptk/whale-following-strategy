@@ -46,13 +46,17 @@ const formatTime = (time) => {
     return format(zonedDate, pattern, { timeZone })
 }
 
+
 ;(async () => {
     let txns = []
-
-    for (let i in currencies) {
-        const c = currencies[i] 
-        txns = txns.concat(((await whales(c)).data.transactions || [])
-        .filter(t => t.from.owner_type !== 'exchange' && t.to.owner_type === 'exchange'))
+    try {
+        for (let i in currencies) {
+            const c = currencies[i] 
+            txns = txns.concat(((await whales(c)).data.transactions || [])
+            .filter(t => t.from.owner_type !== 'exchange' && t.to.owner_type === 'exchange'))
+        }
+    }catch (e) {
+        throw e
     }
 
     console.log(txns)
