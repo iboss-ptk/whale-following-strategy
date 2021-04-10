@@ -11,4 +11,4 @@ jobs:
 workflows:
   send-message:
     jobs:
-      - node/test
+      - send-message
