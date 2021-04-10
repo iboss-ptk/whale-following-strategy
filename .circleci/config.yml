@@ -6,7 +6,7 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install
+      - node/install-packages
       - run: node telegram_bot.js
 workflows:
   send-message:
