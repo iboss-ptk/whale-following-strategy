@@ -6,10 +6,10 @@ const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
 const secret_chat = 1255970858
 
 const now = () => Math.floor(Date.now() / 1000)
-const min = 1000000
+const min = 100000000
 const currencies = ['btc', 'eth']
 
-const window_m = 50
+const window_m = 10
 
 const whales = (currency) => axios.get(
     `https://api.whale-alert.io/v1/transactions?` +
@@ -50,6 +50,8 @@ const formatTime = (time) => {
         txns = txns.concat(((await whales(c)).data.transactions || [])
         .filter(t => t.from.owner_type !== 'exchange' && t.to.owner_type === 'exchange'))
     }
+
+    console.log(txns)
 
     txns.forEach(({symbol, from, to, timestamp, amount, amount_usd}) => {
         const rep = Math.floor(amount_usd / 1000000)

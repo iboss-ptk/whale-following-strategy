@@ -17,9 +17,9 @@ const whaleTxns = async (from) => await axios
     .get(`https://api.clankapp.com/v2/explorer/tx?${toStringParams({
         s_date: 'desc',
         size: 10000,
-        '>_amount_usd': 10000000,
+        '>_amount_usd': 20000000,
         t_symbol: 'btc',
-        t_to_owner: 'binance',
+        // t_to_owner: 'binance',
         t_transaction_type: 'transfer',
         api_key: '6f3f704d1795d33254082deec8b4302e'
     })}`)
