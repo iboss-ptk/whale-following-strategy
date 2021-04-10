@@ -3,7 +3,11 @@ const { utcToZonedTime, format } = require('date-fns-tz')
 
 const TELEGRAM_API_KEY = process.env.TELEGRAM_API_KEY
 const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
-const secret_chat = 1255970858
+// == me only
+// const secret_chat = 1255970858
+
+// == group
+const secret_chat = -340519440
 
 const now = () => Math.floor(Date.now() / 1000)
 const min = 500000
