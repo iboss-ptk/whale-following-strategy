@@ -1,6 +1,6 @@
 name: telegram
 on: 
-  - push
+  push:
   schedule:
     - cron:  '*/5 * * * *'
 
