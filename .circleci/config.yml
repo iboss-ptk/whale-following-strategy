@@ -10,6 +10,9 @@ jobs:
       - run: node telegram_bot.js
 workflows:
   send-message:
+    triggers:
+      - schedule:
+          cron: "0/5 * * * *"
     jobs:
       - send-message:
           context:
