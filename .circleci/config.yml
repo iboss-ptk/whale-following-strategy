@@ -12,7 +12,7 @@ workflows:
   send-message:
     triggers:
       - schedule:
-          cron: "0/5 * * * *"
+          cron: "5 * * * *"
           filters:
             branches:
               only:
