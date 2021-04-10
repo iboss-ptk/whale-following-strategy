@@ -12,3 +12,5 @@ workflows:
   send-message:
     jobs:
       - send-message
+        context:
+          - whale-bot
