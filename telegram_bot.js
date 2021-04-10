@@ -6,7 +6,7 @@ const WHALE_ALERT_API_KEY = process.env.WHALE_ALERT_API_KEY
 const secret_chat = 1255970858
 
 const now = () => Math.floor(Date.now() / 1000)
-const min = 100000000
+const min = 500000
 const currencies = ['btc', 'eth']
 
 const window_m = 10
