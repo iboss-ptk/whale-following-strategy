@@ -4,6 +4,7 @@ orbs:
 jobs:
   send-message:
     executor: node/default
+    context: whale-bot
     steps:
       - checkout
       - node/install-packages
@@ -11,5 +12,4 @@ jobs:
 workflows:
   send-message:
     jobs:
-      - send-message:
-        context: whale-bot
+      - send-message
