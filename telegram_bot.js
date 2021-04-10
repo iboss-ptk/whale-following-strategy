@@ -61,23 +61,32 @@ const formatTime = (time) => {
 
     console.log(txns)
 
-    txns.forEach(({symbol, from, to, timestamp, amount, amount_usd}) => {
+    const msg = txns.map(({symbol, from, to, timestamp, amount, amount_usd}) => {
         const rep = Math.floor(amount_usd / 1000000)
-        telegram(`
+        return `
 =====
 ${ formatCurrency(amount, symbol.toUpperCase())}
+(${usd(amount_usd)})
 =====
 ${'🚨'.repeat(rep)}
-(${usd(amount_usd)})
 has been transfered
 ${from.owner_type} => ${to.owner_type} (${to.owner})
 [@ ${formatTime(timestamp)}]
+`
+    }).join(`
+
+🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
+
 `)
-.catch(err => {
-    console.error(err)
-    process.exit(1)
-})
-    })
+    if (txns.length > 0) {
+        telegram(msg)
+        .catch(err => {
+            console.error(err)
+            process.exit(1)
+        })
+    } else {
+        console.info('quiet times...')
+    }
 })()
 
 
