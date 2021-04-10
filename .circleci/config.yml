@@ -1,0 +1,14 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+jobs:
+  send-message:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install
+      - run: node telegram_bot.js
+workflows:
+  send-message:
+    jobs:
+      - node/test
